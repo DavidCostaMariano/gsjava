@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="conexao.Conexao"/>
+    <fullyQualifiedTypeName name="br.fiap.contato.entidade.Contato"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
+    <fullyQualifiedTypeName name="dao.ContatoDAO"/>
+    <fullyQualifiedTypeName name="entidade.Contato"/>
+    <fullyQualifiedTypeName name="entidade.Paciente"/>
+    <fullyQualifiedTypeName name="dao.PacienteDAO"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="entidade.Especialidade"/>
+    <fullyQualifiedTypeName name="dao.MedicoDAO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="entidade.Medico"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+</qualifiedTypeNameHistroy>

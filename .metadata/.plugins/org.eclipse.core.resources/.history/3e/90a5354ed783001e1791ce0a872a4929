@@ -1,0 +1,13 @@
+function validaCadastro(){
+	var nome = document.getElementById("floatingInputNome").value;
+	var email = document.getElementById("floatingInputEmail").value;
+	var cpf = document.getElementById("floatingInputCpf").value;
+	var senha = document.getElementById("floatingInputSenha").value;
+	var usuario = document.getElementById("floatingInputUsuario").value;
+	if(nome.length > 50){
+	window.alert("NOME GRANDE DA PORRA HEIN PARCEIRO");		
+	}else{
+		window.alert("teste");
+	}
+	console.log(nome);
+}
