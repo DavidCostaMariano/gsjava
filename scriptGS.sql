@@ -58,3 +58,5 @@ insert into java_medico(id,nome,crm,id_especialidade)values (6,'Joel'   , '54321
 insert into java_medico(id,nome,crm,id_especialidade)values (7,'Julia'  , '5432152', 3); 
 insert into java_medico(id,nome,crm,id_especialidade)values (8,'Amanda' , '5435151', 3);
 insert into java_medico(id,nome,crm,id_especialidade)values (9,'Amaral' , '5432150', 3);
+
+commit;
