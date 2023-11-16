@@ -1,3 +1,6 @@
+<%@page import="entidade.Medico"%>
+<%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,17 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="../css/estilo.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script type="text/javascript">
-		function listarMedico(){
-		    var selectMedicos = document.getElementById("listaMedicos");
-		    selectMedicos.removeAttribute("disabled")
-		    var listaMedicos = request.get
-		}
-	</script>
+	
 </head>
 
 <body>
 <jsp:include page="../listarMedicos"></jsp:include>
+<%
+    List<Medico> listaMedicosCarregados = (List<Medico>) request.getAttribute("listaMedicos");
+%>
 	<div
 		class="container h-100 w-50 d-flex justify-content-center align-items-center">
 
@@ -29,7 +29,7 @@
 			<h1 class="text-center">Agendar consulta</h1>
 			<!-- Aqui o cara seleciona a especialidade e a gente carrega a lista de médicos que atendem aquela especialidade -->
 			<div class="row mt-2">
-				<select onchange="listarMedico()">
+				<select id="selectMedicos" onchange="listarMedico()">
 					<option disabled selected>Selecione uma especialidade</option>
 					<option value="1">Cardiologia</option>
 					<option value="2">Neurologista</option>
@@ -37,7 +37,7 @@
 				</select>
 			</div>
 			<div class="row mt-2">
-				<select disabled id="listaMedicos">
+				<select id="listaMedicos" disabled>
 					<option disabled selected>Selecione um médico</option>
 					<option value="1">Cardiologia</option>
 					<option value="2">Neurologista</option>
@@ -63,6 +63,33 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+	var listaMedicos = [
+        <c:forEach var="medico" items="${listaMedicosCarregados}" varStatus="status">
+        {
+        	console.log(medico);
+            id:  medico.getId(),
+            nome: medico.getNome(),
+            telefone: medico.getTelefone(),
+            especialidadeId: medico.getEspecialidadeId(),
+            especialidade: medico.getEspecialidade() 
+        }<c:if test="${!status.last}">,</c:if>
+    </c:forEach>
+	console.log(listaMedicos);
+];
+	console.log(listaMedicos);
+	function listarMedico() {
+
+	    // Pegando o valor selecionado no select
+	    var selectMedicos = document.getElementById("selectMedicos");
+	    var valorSelecionado = selectMedicos.value;
+
+	    // Filtrando a lista baseado no valor selecionado no select
+	    listaMedicos.filter(item => item.especialidadeId == valorSelecionado);
+	    var selectMedicos = document.getElementById("listaMedicos");
+	    selectMedicos.removeAttribute("disabled")
+	}
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

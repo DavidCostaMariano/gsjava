@@ -22,7 +22,7 @@ public class MedicoDAO {
 	}
 	
 	public List<Medico> listarMedicos() {
-		sql = "select jm.*, je.id id_especialidade, je.especialidade from java_medico jm join java_especialidade je on jm.id_especialidade = je.id";
+		sql = "select jm.*, je.especialidade from java_medico jm join java_especialidade je on jm.id_especialidade = je.id";
 		List<Medico> listaMedicos = new LinkedList<>();
 		
 		try (Connection connection = conexao.conectar()) {
@@ -30,9 +30,10 @@ public class MedicoDAO {
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				listaMedicos.add(new Medico(rs.getInt("id"),rs.getString("nome"), rs.getString("crm"), new Especialidade(rs.getInt("especialidade_id"), rs.getString("especialidade"))));
+				listaMedicos.add(new Medico(rs.getInt("id"),rs.getString("nome"), rs.getString("crm"), new Especialidade(rs.getInt("id_especialidade"), rs.getString("especialidade"))));
 			}
 			ps.close();
+			rs.close();
 		} catch (SQLException e) {
 			System.out.println("Erro ao listar os medicos\n" + e);
 		}		

@@ -36,8 +36,7 @@ public class ListarMedicos extends HttpServlet {
 		MedicoDAO medicoDAO = new MedicoDAO();
 		List<Medico> listaMedicos = medicoDAO.listarMedicos();
 		request.setAttribute("listaMedicos", listaMedicos);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/form/formAgendarConsulta.jsp");
-		dispatcher.forward(request, response);
+
 	}
 
 }
