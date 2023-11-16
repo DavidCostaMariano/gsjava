@@ -97,3 +97,8 @@
 0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:56:23 -0300] "GET /GsJava/form/formListagemPaciente.jsp HTTP/1.1" 200 1314
 0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:56:23 -0300] "GET /GsJava/js/Cadastro.js HTTP/1.1" 404 792
 0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:56:24 -0300] "GET /GsJava/form/formAgendarConsulta.jsp HTTP/1.1" 200 2917
+127.0.0.1 - - [16/Nov/2023:19:58:57 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:59:05 -0300] "GET /GsJava/form/formAgendarConsulta.jsp HTTP/1.1" 200 2907
+0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:59:07 -0300] "GET /GsJava/form/formListagemPaciente.jsp HTTP/1.1" 200 1314
+0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:59:07 -0300] "GET /GsJava/js/Cadastro.js HTTP/1.1" 404 792
+0:0:0:0:0:0:0:1 - - [16/Nov/2023:19:59:08 -0300] "GET /GsJava/form/formAgendarConsulta.jsp HTTP/1.1" 200 2907
