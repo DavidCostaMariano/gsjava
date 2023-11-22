@@ -3,7 +3,7 @@ package entidade;
 public class Especialidade {
 	private Integer id;
 	private String especialidade;
-	
+	private String nome;
 	
 	
 	public Especialidade(int id, String especialidade) {
@@ -22,6 +22,9 @@ public class Especialidade {
 	}
 	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade;
+	}
+	public String getNome() {
+		return nome;
 	}
 	
 	

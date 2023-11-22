@@ -77,5 +77,10 @@ public class PacienteDAO {
 		}	
 		return null;
 	}
+
+	public Paciente consultarPorId(int idPaciente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

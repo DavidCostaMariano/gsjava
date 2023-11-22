@@ -18,25 +18,22 @@ import entidade.Medico;
  */
 @WebServlet("/listarMedicos")
 public class ListarMedicos extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private static final long serialVersionUID = 1L;
+
     public ListarMedicos() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		MedicoDAO medicoDAO = new MedicoDAO();
-		List<Medico> listaMedicos = medicoDAO.listarMedicos();
-		request.setAttribute("listaMedicos", listaMedicos);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        MedicoDAO medicoDAO = new MedicoDAO();
+        List<Medico> listaMedicos = medicoDAO.listarMedicos();
 
-	}
+        // Adicione a lista de médicos ao escopo da requisição
+        request.setAttribute("listaMedicos", listaMedicos);
 
+        // Redirecione para a página adequada para exibir os resultados
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listagemMedicos.jsp");
+        dispatcher.forward(request, response);
+    }
 }
