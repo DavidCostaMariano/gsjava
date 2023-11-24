@@ -32,8 +32,5 @@ public class ListarMedicos extends HttpServlet {
         // Adicione a lista de médicos ao escopo da requisição
         request.setAttribute("listaMedicos", listaMedicos);
 
-        // Redirecione para a página adequada para exibir os resultados
-        RequestDispatcher dispatcher = request.getRequestDispatcher("listagemMedicos.jsp");
-        dispatcher.forward(request, response);
     }
 }

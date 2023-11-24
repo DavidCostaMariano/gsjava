@@ -47,6 +47,7 @@ public class Login extends HttpServlet {
 				response.sendRedirect("form/formListagemPaciente.jsp");
 				// login com sucesso, dispatcher pra alguma tela ai
 			}else {
+				response.sendRedirect("form/opcoesAdm.jsp");
 				//response.sendRedirect("form/formCadastroVenda.jsp");
 			}
 		}

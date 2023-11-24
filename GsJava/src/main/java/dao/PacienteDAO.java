@@ -5,9 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import conexao.Conexao;
 import entidade.Paciente;
+import entidade.RelatorioMedico;
+import entidade.RelatorioPaciente;
 
 
 public class PacienteDAO {
@@ -78,9 +82,23 @@ public class PacienteDAO {
 		return null;
 	}
 
-	public Paciente consultarPorId(int idPaciente) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List<RelatorioPaciente> consultarPorId(int idPaciente) {
+        sql = "SELECT jp.nome nome_paciente, jm.nome nome_medico, jm.crm, je.especialidade,  jc.data_consulta from java_consulta jc inner join java_medico jm on jc.id_medico = jm.id inner join java_paciente jp on jc.id_paciente = jp.id inner join java_especialidade je on jm.id_especialidade = je.id where jm.id = ?";
+        List<RelatorioPaciente> relatorioPaciente = new ArrayList<>();
+        try (Connection connection = conexao.conectar()) {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, idPaciente);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            	relatorioPaciente.add(new RelatorioPaciente(
+            			rs.getString("NOME_PACIENTE"), rs.getString("NOME_MEDICO"), rs.getString("crm"),rs.getString("especialidade"), rs.getDate("DATA_CONSULTA"), rs.getDouble("valor_consulta")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao consultar médico por ID\n" + e);
+        }
+
+        return relatorioPaciente; // Retorna null se não encontrar o médico com o ID fornecido
+    }
+
 	
 }

@@ -1,0 +1,50 @@
+package controle;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dao.MedicoDAO;
+import entidade.Medico;
+import entidade.Especialidade;
+
+@WebServlet("/cadastrarMedico")
+public class CadastroMedico extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    public CadastroMedico() {
+        super();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Obter parâmetros do formulário
+        String nome = request.getParameter("floatingInputNome");
+        String crm = request.getParameter("floatingInputCrm");
+        int idEspecialidade = Integer.parseInt(request.getParameter("selectEspecialidade.value"));
+        
+        // Criar objeto Médico
+        Medico medico = new Medico();
+        medico.setNome(nome);
+        medico.setCrm(crm);
+        medico.setEspecialidade(new Especialidade(idEspecialidade, ""));
+
+        // Chamar método de inserção no banco de dados
+        MedicoDAO medicoDao = new MedicoDAO();
+        boolean cadastrado = medicoDao.inserir(medico);
+
+        // Redirecionar para página de sucesso ou falha
+        if (cadastrado) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("opcoesAdm.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroMedicoFalha.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+}

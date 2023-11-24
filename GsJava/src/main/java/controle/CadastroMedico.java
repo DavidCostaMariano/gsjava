@@ -26,8 +26,8 @@ public class CadastroMedico extends HttpServlet {
         // Obter parâmetros do formulário
         String nome = request.getParameter("floatingInputNome");
         String crm = request.getParameter("floatingInputCrm");
-        int idEspecialidade = Integer.parseInt(request.getParameter("idEspecialidade"));
-
+        int idEspecialidade = Integer.parseInt(request.getParameter("selectEspecialidade"));
+        
         // Criar objeto Médico
         Medico medico = new Medico();
         medico.setNome(nome);
@@ -40,11 +40,9 @@ public class CadastroMedico extends HttpServlet {
 
         // Redirecionar para página de sucesso ou falha
         if (cadastrado) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroMedicoSucesso.jsp");
-            dispatcher.forward(request, response);
+			response.sendRedirect("../form/opcoesAdm.jsp");
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroMedicoFalha.jsp");
-            dispatcher.forward(request, response);
+			response.sendRedirect("../form/cadastroMedicoFalha.jsp");
         }
     }
 }

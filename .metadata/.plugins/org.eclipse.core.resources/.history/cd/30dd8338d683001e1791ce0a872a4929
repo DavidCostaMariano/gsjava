@@ -1,4 +1,0 @@
-function validaCadastro(){
-	var nome = document.getElementById("floatingInputNome").value;
-	console.log(nome);
-}

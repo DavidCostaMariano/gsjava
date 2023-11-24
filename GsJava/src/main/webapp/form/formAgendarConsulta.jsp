@@ -67,7 +67,6 @@
 	var listaMedicos = [
         <c:forEach var="medico" items="${listaMedicosCarregados}" varStatus="status">
         {
-        	console.log(medico);
             id:  medico.getId(),
             nome: medico.getNome(),
             telefone: medico.getTelefone(),
@@ -75,7 +74,6 @@
             especialidade: medico.getEspecialidade() 
         }<c:if test="${!status.last}">,</c:if>
     </c:forEach>
-	console.log(listaMedicos);
 ];
 	console.log(listaMedicos);
 	function listarMedico() {
