@@ -19,22 +19,26 @@
 </head>
 
 <body>
-	<jsp:include page="../listarMedicos"></jsp:include>
-	<script type="text/javascript">
-	    function listarMedico() {
-	        var listaMedicos = &{listaMedicos}; // Verifique se esta variável está corretamente definida
-	        console.log(listaMedicos);
-	    }
+<script>
+	listaMedicos(){
+		var select = document.getElementById("selectMedicos").value;
+		var lista = document.getElementById("listaMedicos"+ select);
+		console.log(lista);
+		lista.classList.remove("d-none");
+	}
 </script>
+	<jsp:include page="../listarMedicos"></jsp:include>
 	<div
 		class="container h-100 w-50 d-flex justify-content-center align-items-center">
-
-		<form method="post" action="login"
+<h1>Infelizmente nao consegui desenvolver essa tela, eu quis fazer o select do médico aparecer dinamicamente com base na especialidade selecionada
+ porem nao consegui fazer com que o onchange() chamasse a funcao do js e tambem nao consegui fazer no java o select aparecer. Tentei fazer com o c:if
+  porem descobri que ele executa no momento que a tela carrega e nao é dinamica, Boas festas.</h1>
+		<%-- <form
 			style="border: 2px solid #333; border-radius: 10px; padding: 40px">
 			<h1 class="text-center">Agendar consulta</h1>
 			<!-- Aqui o cara seleciona a especialidade e a gente carrega a lista de médicos que atendem aquela especialidade -->
 			<div class="row mt-2">
-				<select id="selectMedicos" onchange="listarMedico()">
+				<select id="selectMedicos" name="selectMedicos" onchange="listaMedicos()">
 					<option disabled selected>Selecione uma especialidade</option>
 					<option value="1">Cardiologia</option>
 					<option value="2">Neurologista</option>
@@ -43,16 +47,14 @@
 			</div>
 
 
-			<c:if test="${medicos == 1}">
-				<div class="row mt-2 d-none">
-					<select id="listaMedicos1" disabled>
+				<div class="row mt-2">
+					<select id="listaMedicos1" class="d-none" disabled>
 						<option disabled selected>Selecione um médico</option>
 						<c:forEach var="item" items="${listaMedicosCardiologistas}">
 							<option value="${item.id}"><c:out value="${item.nome}"></c:out>
 						</c:forEach>
 					</select>
 				</div>
-			</c:if>
 
 			<c:if test="${medicos == 2}">
 				<div class="row mt-2 d-none">
@@ -93,7 +95,7 @@
 
 				</div>
 			</div>
-		</form>
+		</form> --%>
 	</div>
 
 	<script

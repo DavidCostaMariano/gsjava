@@ -32,7 +32,7 @@
 		class="container h-100 w-50 d-flex justify-content-center align-items-center">
 <h1>Infelizmente nao consegui desenvolver essa tela, eu quis fazer o select do médico aparecer dinamicamente com base na especialidade selecionada
  porem nao consegui fazer com que o onchange() chamasse a funcao do js e tambem nao consegui fazer no java o select aparecer. Tentei fazer com o c:if
-  porem descobri que ele executa no momento que a tela carrega e nao é dinamica, Boas festas.</h1>
+  porem descobri que ele executa no momento que a tela carrega e nao é dinamica</h1>
 		<%-- <form
 			style="border: 2px solid #333; border-radius: 10px; padding: 40px">
 			<h1 class="text-center">Agendar consulta</h1>
