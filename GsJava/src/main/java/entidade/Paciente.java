@@ -10,6 +10,13 @@ public class Paciente {
 	private String senha;
 	private String cpf;
 	private String username;
+	
+	
+	public Paciente(Integer id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
 	public Paciente(int id, String nome, String email, String senha, String cpf, String username) {
 		this.id = id;
 		this.nome = nome;

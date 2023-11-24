@@ -59,7 +59,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="/form/relatorioPorMedico.jsp"><- Voltar</a>
+		<a href="../form/relatorioPorMedico.jsp"><- Voltar</a>
 	</div>
 	</c:if>
 	<script

@@ -6,9 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import conexao.Conexao;
+import entidade.Especialidade;
+import entidade.Medico;
 import entidade.Paciente;
 import entidade.RelatorioMedico;
 import entidade.RelatorioPaciente;
@@ -23,6 +26,22 @@ public class PacienteDAO {
 	public PacienteDAO() {
 		conexao = new Conexao();
 	}
+	
+    public List<Paciente> listarPaciente() {
+        sql = "SELECT id, nome FROM java_paciente";
+        List<Paciente> listaPacientes = new LinkedList<>();
+
+        try (Connection connection = conexao.conectar()) {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaPacientes.add(new Paciente(rs.getInt("id"), rs.getString("nome")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar os pacientes\n" + e);
+        } 
+        return listaPacientes;
+    }
 	
 	public boolean inserir(Paciente paciente) {
 		sql = "insert into java_paciente values(id_paciente_seq.nextval, ?, ?, ?, ?, ?)";
@@ -42,6 +61,7 @@ public class PacienteDAO {
 			return false;
 		}		
 	}
+	
 	public boolean findUserByUsername(String username) {
 		sql = "select count(*) pacientes from java_paciente where username = ?";
 		
@@ -83,7 +103,7 @@ public class PacienteDAO {
 	}
 
     public List<RelatorioPaciente> consultarPorId(int idPaciente) {
-        sql = "SELECT jp.nome nome_paciente, jm.nome nome_medico, jm.crm, je.especialidade,  jc.data_consulta from java_consulta jc inner join java_medico jm on jc.id_medico = jm.id inner join java_paciente jp on jc.id_paciente = jp.id inner join java_especialidade je on jm.id_especialidade = je.id where jm.id = ?";
+        sql = "SELECT jp.nome nome_paciente, jm.nome nome_medico, jm.crm, je.especialidade,  jc.data_consulta from java_consulta jc inner join java_medico jm on jc.id_medico = jm.id inner join java_paciente jp on jc.id_paciente = jp.id inner join java_especialidade je on jm.id_especialidade = je.id where jp.id = ?";
         List<RelatorioPaciente> relatorioPaciente = new ArrayList<>();
         try (Connection connection = conexao.conectar()) {
             ps = connection.prepareStatement(sql);
@@ -91,7 +111,7 @@ public class PacienteDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
             	relatorioPaciente.add(new RelatorioPaciente(
-            			rs.getString("NOME_PACIENTE"), rs.getString("NOME_MEDICO"), rs.getString("crm"),rs.getString("especialidade"), rs.getDate("DATA_CONSULTA"), rs.getDouble("valor_consulta")));
+            			rs.getString("NOME_PACIENTE"), rs.getString("NOME_MEDICO"), rs.getString("crm"),rs.getString("especialidade"), rs.getDate("DATA_CONSULTA")));
             }
         } catch (SQLException e) {
             System.out.println("Erro ao consultar médico por ID\n" + e);

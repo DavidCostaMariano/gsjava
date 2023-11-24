@@ -14,17 +14,14 @@ public class RelatorioPaciente {
 	
 	private Date data_consulta;
 	
-	private double valor_consulta;
 	
-	public RelatorioPaciente(String nome_paciente, String nome_medico,String especialidade, String crm, Date data_consulta,
-			double valor_consulta) {
+	public RelatorioPaciente(String nome_paciente, String nome_medico,String especialidade, String crm, Date data_consulta) {
 		super();
 		this.nome_paciente = nome_paciente;
 		this.nome_medico = nome_medico;
 		this.especialidade = especialidade;
 		this.crm = crm;
 		this.data_consulta = data_consulta;
-		this.valor_consulta = valor_consulta;
 	}
 	public RelatorioPaciente() {
 		
@@ -62,13 +59,7 @@ public class RelatorioPaciente {
 		this.data_consulta = data_consulta;
 	}
 
-	public double getValor_consulta() {
-		return valor_consulta;
-	}
 
-	public void setValor_consulta(double valor_consulta) {
-		this.valor_consulta = valor_consulta;
-	}
 	public String getCrm() {
 		return crm;
 	}

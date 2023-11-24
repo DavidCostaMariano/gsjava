@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,15 +14,15 @@
 
 </head>
 <body class="d-flex align-items-center" style="height: 100vh">
-	<jsp:include page="../listarPacientes"></jsp:include>
+	<jsp:include page="../listarPaciente"></jsp:include>
 
 
 	<c:if test="${empty relatorio}">
 		<div class="container">
-			<form name="formMedico" action="../relatorioPorPaciente">
+			<form name="formPaciente" action="../relatorioPorPaciente">
 				<h1>Selecione um paciente</h1>
-				<select id="selectMedico" name="selectMedico" class="w-100"
-					onchange="document.formMedico.submit();">
+				<select id="selectPaciente" name="selectPaciente" class="w-100"
+					onchange="document.formPaciente.submit();">
 					<option disabled selected value="0">Selecione um paciente</option>
 					<c:forEach var="item" items="${listaPacientes}">
 						<option value="${item.id}"><c:out value="${item.nome}"></c:out>
@@ -54,7 +55,7 @@
 
 			</tbody>
 		</table>
-		<a href="/form/relatorioPorPaciente.jsp"><- Voltar</a>
+		<a href="../form/relatorioPorPaciente.jsp"><- Voltar</a>
 	</div>
 	</c:if>
 	<script
