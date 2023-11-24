@@ -1,7 +1,6 @@
 package entidade;
 
 
-import java.time.LocalDate;
 
 public class Paciente {
 	private Integer id;
@@ -11,6 +10,10 @@ public class Paciente {
 	private String cpf;
 	private String username;
 	
+	
+	public Paciente(String nome) {
+		this.nome = nome;
+	}
 	
 	public Paciente(Integer id, String nome) {
 		super();

@@ -23,8 +23,8 @@ public class MedicoDAO {
         conexao = new Conexao();
     }
 
-    public List<Medico> listarMedicos() {
-        sql = "SELECT jm.*, je.especialidade FROM java_medico jm JOIN java_especialidade je ON jm.id_especialidade = je.id";
+    public List<Medico> listarMedicosCardiologistas() {
+        sql = "SELECT jm.*, je.especialidade FROM java_medico jm JOIN java_especialidade je ON jm.id_especialidade = je.id where je.id = 1";
         List<Medico> listaMedicos = new LinkedList<>();
 
         try (Connection connection = conexao.conectar()) {
@@ -43,6 +43,46 @@ public class MedicoDAO {
         return listaMedicos;
     }
 
+    public List<Medico> listarMedicosNeurologia() {
+        sql = "SELECT jm.*, je.especialidade FROM java_medico jm JOIN java_especialidade je ON jm.id_especialidade = je.id where je.id = 2";
+        List<Medico> listaMedicos = new LinkedList<>();
+
+        try (Connection connection = conexao.conectar()) {
+            ps = connection.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaMedicos.add(new Medico(rs.getInt("id"), rs.getString("nome"), rs.getString("crm"),
+                        new Especialidade(rs.getInt("id_especialidade"), rs.getString("especialidade"))));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar os medicos\n" + e);
+        } finally {
+            fecharRecursos();
+        }
+        return listaMedicos;
+    }
+    
+    public List<Medico> listarMedicosPsiquiatria() {
+        sql = "SELECT jm.*, je.especialidade FROM java_medico jm JOIN java_especialidade je ON jm.id_especialidade = je.id where je.id = 3";
+        List<Medico> listaMedicos = new LinkedList<>();
+
+        try (Connection connection = conexao.conectar()) {
+            ps = connection.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaMedicos.add(new Medico(rs.getInt("id"), rs.getString("nome"), rs.getString("crm"),
+                        new Especialidade(rs.getInt("id_especialidade"), rs.getString("especialidade"))));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar os medicos\n" + e);
+        } finally {
+            fecharRecursos();
+        }
+        return listaMedicos;
+    }
+    
     public boolean inserir(Medico medico) {
         sql = "INSERT INTO java_medico (id, nome, crm, id_especialidade) VALUES (id_medico_seq.nextval, ?, ?, ?)";
 

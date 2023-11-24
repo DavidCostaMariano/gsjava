@@ -25,7 +25,13 @@
 				<select id="selectMedico" name="selectMedico" class="w-100"
 					onchange="document.formMedico.submit();">
 					<option disabled selected value="0">Selecione um médico</option>
-					<c:forEach var="item" items="${listaMedicos}">
+					<c:forEach var="item" items="${listaMedicosCardiologistas}">
+						<option value="${item.id}"><c:out value="${item.nome}"></c:out>
+					</c:forEach>
+					<c:forEach var="item" items="${listaMedicosNeurologia}">
+						<option value="${item.id}"><c:out value="${item.nome}"></c:out>
+					</c:forEach>
+					<c:forEach var="item" items="${listaMedicosPsiquiatra}">
 						<option value="${item.id}"><c:out value="${item.nome}"></c:out>
 					</c:forEach>
 				</select>
@@ -59,7 +65,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="../form/relatorioPorMedico.jsp"><- Voltar</a>
+		<a href="form/opcoesAdm.jsp"><- Voltar</a>
 	</div>
 	</c:if>
 	<script

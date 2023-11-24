@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import dao.PacienteDAO;
 import entidade.Paciente;
@@ -42,13 +44,11 @@ public class Login extends HttpServlet {
 			Paciente paciente = new Paciente();
 			paciente = pacienteDao.login(username, senha);
 			if (paciente != null) {
-				//precisa verificar se o usuario é adm ou nao, se for adm jogar para uma tela que tenha as funcionalidades dele
-				//se nao, jogar para tela com as funçoes do paciente
+				HttpSession session =request.getSession();
+				session.setAttribute("usuario", paciente);
 				response.sendRedirect("form/formListagemPaciente.jsp");
-				// login com sucesso, dispatcher pra alguma tela ai
-			}else {
+			} else {
 				response.sendRedirect("form/opcoesAdm.jsp");
-				//response.sendRedirect("form/formCadastroVenda.jsp");
 			}
 		}
 	}

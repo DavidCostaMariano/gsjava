@@ -14,13 +14,16 @@ import java.util.List;
 
 @WebServlet("/relatorioGeral")
 public class RelatorioGeral extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         ConsultaDAO consultaDAO = new ConsultaDAO();
         List<Consulta> consultas = consultaDAO.obterConsultasGerais();  // Método a ser implementado na classe ConsultaDAO
 
+        double valorTotal = 0;
+        for(Consulta item: consultas) {
+        	valorTotal += item.getValorConsulta();
+        }
+        request.setAttribute("valorTotal", valorTotal);
         request.setAttribute("consultas", consultas);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("relatorioGeral.jsp");
-        dispatcher.forward(request, response);
     }
 }

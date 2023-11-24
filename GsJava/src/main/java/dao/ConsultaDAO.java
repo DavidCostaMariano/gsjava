@@ -22,35 +22,36 @@ public class ConsultaDAO {
         conexao = new Conexao();
     }
 
-    public boolean inserir(Consulta consulta) {
-        // Defina a instrução SQL de inserção
-        String sql = "INSERT INTO consulta (id_paciente, id_medico, dia_semana) VALUES (?, ?, ?)";
-
-        try (Connection connection = conexao.conectar()) {
-            // Crie um PreparedStatement com a instrução SQL
-            ps = connection.prepareStatement(sql);
-
-            // Configure os parâmetros da consulta
-            ps.setInt(1, consulta.getPaciente().getId()); // Supondo que getId() retorne o ID do paciente
-            ps.setInt(2, consulta.getMedico().getId()); // Supondo que getId() retorne o ID do médico
-            ps.setInt(3, consulta.getDiaSemana());
-
-            // Execute a inserção
-            int linhasAfetadas = ps.executeUpdate();
-
-            // Verifique se a inserção foi bem-sucedida
-            return linhasAfetadas > 0;
-        } catch (SQLException e) {
-            System.out.println("Erro ao inserir consulta no banco de dados: " + e);
-            return false;
-        }
-    }
+//    public boolean inserir(Consulta consulta) {
+//        // Defina a instrução SQL de inserção
+//        String sql = "INSERT INTO consulta (id_paciente, id_medico, dia_semana) VALUES (?, ?, ?)";
+//
+//        try (Connection connection = conexao.conectar()) {
+//            // Crie um PreparedStatement com a instrução SQL
+//            ps = connection.prepareStatement(sql);
+//
+//            // Configure os parâmetros da consulta
+//            ps.setInt(1, consulta.getPaciente().getId()); // Supondo que getId() retorne o ID do paciente
+//            ps.setInt(2, consulta.getMedico().getId()); // Supondo que getId() retorne o ID do médico
+//            ps.setInt(3, consulta.getDiaSemana());
+//
+//            // Execute a inserção
+//            int linhasAfetadas = ps.executeUpdate();
+//
+//            // Verifique se a inserção foi bem-sucedida
+//            return linhasAfetadas > 0;
+//        } catch (SQLException e) {
+//            System.out.println("Erro ao inserir consulta no banco de dados: " + e);
+//            return false;
+//        }
+//    }
 
 
     public List<Consulta> obterConsultasGerais() {
-        sql = "SELECT * FROM consulta c " +
-              "JOIN paciente p ON c.id_paciente = p.id " +
-              "JOIN medico m ON c.id_medico = m.id";
+        sql = "SELECT p.nome nome_paciente, c.data_consulta, m.nome nome_medico, e.especialidade, e.valor_consulta FROM java_consulta c \r\n"
+        		+ "JOIN java_paciente p ON c.id_paciente = p.id \r\n"
+        		+ "JOIN java_medico m ON c.id_medico = m.id \r\n"
+        		+ "inner join java_especialidade e on m.id_especialidade = e.id";
 
         List<Consulta> consultas = new ArrayList<>();
 
@@ -59,12 +60,7 @@ public class ConsultaDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                int idConsulta = rs.getInt("id_consulta");
-                Paciente paciente = new Paciente(rs.getInt("id_paciente"), rs.getString("nome_paciente"), rs.getString("cpf_paciente"), rs.getString("email_paciente"), rs.getString("username_paciente"), rs.getString("senha_paciente"));
-                Medico medico = new Medico(rs.getInt("id_medico"), rs.getString("nome_medico"), rs.getString("crm_medico"), null); // Você precisa ajustar conforme sua classe Medico
-                int diaSemana = rs.getInt("dia_semana"); // Certifique-se de ter essa coluna na tabela
-
-                Consulta consulta = new Consulta(idConsulta, paciente, medico, diaSemana);
+            	Consulta consulta = new Consulta(rs.getString("nome_paciente"), rs.getString("nome_medico"), rs.getString("especialidade"),rs.getDate("data_consulta"),rs.getDouble("valor_consulta"));
                 consultas.add(consulta);
             }
         } catch (SQLException e) {

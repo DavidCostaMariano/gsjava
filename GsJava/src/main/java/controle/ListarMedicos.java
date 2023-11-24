@@ -27,10 +27,14 @@ public class ListarMedicos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MedicoDAO medicoDAO = new MedicoDAO();
-        List<Medico> listaMedicos = medicoDAO.listarMedicos();
+        List<Medico> listaMedicosCardiologistas = medicoDAO.listarMedicosCardiologistas();
+        List<Medico> listaMedicosNeurologia = medicoDAO.listarMedicosNeurologia();
+        List<Medico> listaMedicosPsiquiatra = medicoDAO.listarMedicosPsiquiatria();
 
         // Adicione a lista de médicos ao escopo da requisição
-        request.setAttribute("listaMedicos", listaMedicos);
+        request.setAttribute("listaMedicosCardiologistas", listaMedicosCardiologistas);
+        request.setAttribute("listaMedicosNeurologia", listaMedicosNeurologia);
+        request.setAttribute("listaMedicosPsiquiatra", listaMedicosPsiquiatra);
 
     }
 }
