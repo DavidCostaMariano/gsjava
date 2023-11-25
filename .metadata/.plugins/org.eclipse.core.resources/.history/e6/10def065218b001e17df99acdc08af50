@@ -1,0 +1,62 @@
+package entidade;
+
+import java.util.Date;
+
+public class RelatorioMedico {
+
+	private String nomeMedico;
+	
+	private String nomePaciente;
+	
+	private Date dataConsulta;
+	
+	private double valorConsulta;
+
+
+	public RelatorioMedico(String nome_medico, String nome_paciente, Date data_consulta, double valor_consulta) {
+		super();
+		this.nomeMedico = nome_medico;
+		this.nomePaciente = nome_paciente;
+		this.dataConsulta = data_consulta;
+		this.valorConsulta = valor_consulta;
+	}
+	public RelatorioMedico() {
+		
+	}
+	public String getNomeMedico() {
+		return nomeMedico;
+	}
+
+	public void setNomeMedico(String nome_medico) {
+		this.nomeMedico = nome_medico;
+	}
+
+	public String getNomePaciente() {
+		return nomePaciente;
+	}
+
+	public void setNomePaciente(String nome_paciente) {
+		this.nomePaciente = nome_paciente;
+	}
+
+	public Date getDataConsulta() {
+		return dataConsulta;
+	}
+
+	public void setDataConsulta(Date data_consulta) {
+		this.dataConsulta = data_consulta;
+	}
+
+	public double getValorConsulta() {
+		return valorConsulta;
+	}
+
+	public void setValorConsulta(double valor_consulta) {
+		this.valorConsulta = valor_consulta;
+	}
+
+	
+	
+	
+	
+}

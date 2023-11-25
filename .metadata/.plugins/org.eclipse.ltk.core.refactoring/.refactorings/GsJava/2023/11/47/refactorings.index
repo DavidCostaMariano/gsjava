@@ -3,3 +3,10 @@
 1700784194323	Rename local variable 'relatorioMedico'
 1700858549233	Delete element
 1700858555667	Delete element
+1700868247880	Delete elements
+1700868272809	Rename field 'nome_medico'
+1700868292348	Rename field 'nome_paciente'
+1700868312608	Rename field 'data_consulta'
+1700868676599	Rename field 'nomeMedico'
+1700868681822	Rename field 'nomePaciente'
+1700868687118	Rename field 'dataConsulta'

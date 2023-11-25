@@ -5,18 +5,21 @@
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebFilter"/>
     <fullyQualifiedTypeName name="dao.ContatoDAO"/>
     <fullyQualifiedTypeName name="entidade.Contato"/>
-    <fullyQualifiedTypeName name="entidade.Paciente"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="dao.MedicoDAO"/>
     <fullyQualifiedTypeName name="entidade.Medico"/>
     <fullyQualifiedTypeName name="entidade.Especialidade"/>
     <fullyQualifiedTypeName name="dao.EspecialidadeDAO"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="controle.RelatorioGeral"/>
     <fullyQualifiedTypeName name="entidade.RelatorioMedico"/>
+    <fullyQualifiedTypeName name="entidade.RelatorioPaciente"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="dao.PacienteDAO"/>
-    <fullyQualifiedTypeName name="entidade.RelatorioPaciente"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="entidade.ConsultasMarcadas"/>
+    <fullyQualifiedTypeName name="javax.websocket.Session"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="entidade.Paciente"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

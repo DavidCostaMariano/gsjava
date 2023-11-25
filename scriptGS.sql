@@ -82,4 +82,9 @@ insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (2,1,
 insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (3,2,9, TO_DATE(SYSDATE));
 insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (4,2,5, TO_DATE(SYSDATE));
 insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (5,3,2, TO_DATE(SYSDATE));
+insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (6,3,3, TO_DATE(SYSDATE));
+insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (7,1,4, TO_DATE(SYSDATE));
+insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (8,1,6, TO_DATE(SYSDATE));
+insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (9,2,7, TO_DATE(SYSDATE));
+insert into java_consulta(id, id_paciente, id_medico, data_consulta)values (10,2,8, TO_DATE(SYSDATE));
 commit;
